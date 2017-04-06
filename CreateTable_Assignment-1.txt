@@ -1,0 +1,53 @@
+--Creating Tables-Assignment 1 for ITC222
+
+use MetroAlt
+
+--BusService Table Creation for Question 1 
+
+Create table BusService
+(
+BusServiceKey int identity(1,1) primary key,
+BusServiceName nvarchar(255) not null,
+BusServiceDescription nvarchar(255) null,
+)
+
+-- Maintenance Table Creation for Question 2
+Create table Maintenance
+(
+MaintenanceKey int identity(1,1) primary key,
+MaintenanceDate Date not null,
+BusServiceKey int not null
+Constraint FK_Maintenance Foreign key(BusServiceKey) --Foreign Key creation in Maintanenance Table- Question 2
+references BusService(BusServiceKey)
+)
+
+--MaintenanceDetail Table Creation for Question 3
+Create table MaintenanceDetail
+(
+MaintenanceDetailKey int identity(1,1),
+MaintenanceKey int not null,
+EmployeeKey int not null,
+BusServiceKey int not null,
+MaintenanceNotes nvarchar(255) null,
+)
+
+
+--Key creation in MaintenanceDetail table using alter command for Question 4, 5 and 6
+Alter table MaintenanceDetail Add 
+  Constraint PK_MaintenanceDetail primary key (MaintenanceDetailKey),
+  Constraint FK_MaintenanceKey foreign key (MaintenanceKey) 
+    references Maintenance(MaintenanceKey),
+  Constraint FK_EmployeeKey foreign key (EmployeeKey)
+    references Employee(EmployeeKey),
+ Constraint FK_BusServiceKey foreign key (BusServiceKey) 
+   references BusService(BusServiceKey);
+
+ -- Coloumn addition to Bustype table with datatype using alter command for Question 7
+   Alter table BusType
+   Add BusTypeAccessible bit;
+  
+
+ -- constraint addition with alter command for Question 8
+  Alter table Employee
+  Add constraint unique_EmployeeEmail Unique(EmployeeEmail)
+
