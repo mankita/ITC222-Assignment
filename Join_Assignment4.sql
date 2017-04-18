@@ -5,7 +5,7 @@ use MetroAlt
 --Select * from BusScheduleAssignment
 --Select * from Employee
 --Select * from EmployeePosition
---Select * from BusRoute
+--Select * from BusRoutegg
 
 Select * from Employee
 Cross Join BusRoute
