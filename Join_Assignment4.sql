@@ -47,7 +47,7 @@ where BusRouteKey = 43
 
 --7
 
-Select Distinct EmployeePosition.PositionKey, PositionName, Position.PositionKey
+Select Distinct EmployeePosition.PositionKey as EmployeePositionKey, PositionName, Position.PositionKey as PositionKey
 from Position
 left outer Join EmployeePosition
 on EmployeePosition.PositionKey= Position.PositionKey
