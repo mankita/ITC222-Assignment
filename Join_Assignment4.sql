@@ -8,22 +8,20 @@ Cross Join BusRoute
 
 --2
 
-Select BusBarnKey, BusPurchaseDate,
-BusTypeDescription, BusTypeCapacity, BusTypeEstimatedMPG, BustypePurchasePrice, BusTypeAccessible
-From Bustype
-inner join Bus
-on BusType.BusTypeKey = Bus.BusTypeKey 
+Select * From  Bustype inner join Bus
+on Bus.BusTypeKey = BusType.BusTypeKey 
 where BusBarnKey =3
 
 --3
-Select Sum(BustypePurchasePrice) as TotalBusCost
+
+Select BustypePurchasePrice as TotalBusCost,BusBarnKey
 From Bustype
 inner join Bus
 on BusType.BusTypeKey = Bus.BusTypeKey 
 where BusBarnKey =3
 
 --4
-Select * from Bustype
+
 Select Sum(BustypePurchasePrice) as TotalBusCost,BusTypeDescription
 From Bustype
 inner join Bus
