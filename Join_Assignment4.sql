@@ -1,15 +1,10 @@
 use MetroAlt
 
---1-- need to be clear about question
-
---Select * from BusScheduleAssignment
---Select * from Employee
---Select * from EmployeePosition
---Select * from BusRoutegg
+--1-- 
 
 Select * from Employee
 Cross Join BusRoute
-inner join EmployeePosition on Employee.EmployeeKey =EmployeePosition.EmployeeKey
+
 
 --2
 
@@ -61,14 +56,12 @@ on EmployeePosition.PositionKey= Position.PositionKey
 where EmployeePosition.PositionKey is null
 
 --8
---question need to clear(to be asked)
 
-
-
-
-
-
-
-
-
+Select Employee.Employeekey, EmployeeLastName, EmployeeFirstName,Positionkey,BusscheduleAssignmentKey
+from Employee
+inner join EmployeePosition
+on  Employee.Employeekey = EmployeePosition.EmployeeKey
+left outer join BusscheduleAssignment
+on Employee.EmployeeKey = BusscheduleAssignment.EmployeeKey
+where PositionKey=1 and  BusscheduleAssignment.EmployeeKey is null
 
