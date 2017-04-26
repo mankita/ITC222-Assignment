@@ -21,7 +21,7 @@ Select Year(BusScheduleAssignmentDate) as [Year],
 Sum(Riders) as [Annual Total], 
 AVG(Riders) as [Annual Average],
 (Select Sum(Riders) from Ridership) as [Total],
-sum(Riders) * 100   / 
+sum(Riders) * 100.00  / 
 (Select Sum(Riders) from Ridership) as [Percent]
 from Ridership
 Inner join BusScheduleAssignment
@@ -36,21 +36,12 @@ INTO EmployeeZ
 FROM Employee
 WHERE EmployeeLastName LIKE 'Z%'
 
---Drop table EmployeeZ
---Select * from EmployeeZ
+--DROP table EmployeeZ 
+--SELECT * from EmployeeZ 
 
 --5
 
 Select PositionKey, EmployeeKey, EmployeeHourlyPayRate from employeeposition e1
 where EmployeeHourlyPayRate=
-(Select  max(EmployeeHourlyPayRate) from EmployeePosition e2 where e1.PositionKey= e2.PositionKey) 
-
-
-
-
-
-
-
-
-
-
+(Select  max(EmployeeHourlyPayRate) from EmployeePosition e2 where e1.PositionKey= e2.PositionKey)
+Order by PositionKey 
